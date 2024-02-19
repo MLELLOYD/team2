@@ -1,37 +1,44 @@
+/* Result.css */
 .dropdown-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  button {
-    margin: 10px 0;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    z-index: 1000;
-    background: white;
-    border: 1px solid #ddd;
-    width: 100%;
-  }
-  
-  li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    cursor: pointer;
-  }
-  
-  li:last-child {
-    border-bottom: none;
-  }
-  
-  li:hover {
-    background-color: #f0f0f0;
-  }
-  
+  position: relative;
+  display: flex;
+  justify-content: center; /* Aligns the button horizontally */
+  align-items: center; /* Aligns the button vertically */
+  height: 100vh; /* Takes the full height of the viewport */
+}
+
+.dropdown-button {
+  background-color: #f8f9fa;
+  color: black;
+  padding: 16px 32px; /* Increased padding for a larger button */
+  font-size: 18px; /* Larger font size for the button text */
+  border: 1px solid #ddd;
+  cursor: pointer;
+  width: 50%;
+  border-radius: 5px; /* Optional: for rounded corners */
+  outline: none; /* Removes the outline to keep the design clean */
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow to the button */
+}
+
+.dropdown-list {
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  margin-top: 5px; /* Adds a small space between the button and the dropdown */
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width: max-content; /* Ensures the width of dropdown is based on content */
+}
+
+.dropdown-list-item {
+  padding: 15px 30px; /* Increased padding for a larger dropdown items */
+  cursor: pointer;
+  font-size: 16px; /* Larger font size for the dropdown items */
+  white-space: nowrap; /* Ensures the text doesn't wrap */
+}
+
+.dropdown-list-item:hover {
+  background-color: #f2f2f2;
+}
