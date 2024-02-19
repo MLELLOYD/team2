@@ -2,14 +2,15 @@
 import React, { useState } from 'react';
 import Webcam from 'react-webcam';
 import logo from './logo.png'; // Make sure the path matches the location of your logo file
+import {useNavigate } from 'react-router-dom'; 
 
 function App() {
   const webcamRef = React.useRef(null);
   const [capturedImage, setCapturedImage] = useState(null);
+  const navigate = useNavigate();
 
   // Dummy functions for button clicks
   const handleButtonClick2 = () => alert('Button 2 clicked');
-  const handleButtonClick3 = () => alert('Button 3 clicked');
 
   // Function to capture image from webcam
   const captureImage = () => {
@@ -21,6 +22,9 @@ function App() {
   const webcamStyle = {
     width: '100%',
     height: 'auto',
+  };
+  const handleButtonClick3 = () => {
+    navigate('/about'); // Use navigate to change the route
   };
 
   return (
@@ -55,5 +59,4 @@ function App() {
 }
 
 export default App;
-
 
