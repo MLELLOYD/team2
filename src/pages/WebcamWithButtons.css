@@ -12,7 +12,6 @@
     max-height: 80%; /* Ensure the webcam does not exceed the viewport height */
     object-fit: contain; /* Ensures the webcam feed fits the allocated space without distortion */
   }
-  
   .buttons-container {
     display: flex;
     flex-direction: column;
@@ -22,7 +21,6 @@
     width: 40%; /* Adjusted width of the button container */
     max-width: 150px; /* Maximum width to ensure buttons do not get too wide */
   }
-  
   .action-button {
     margin: 100px 0; /* Reduced space between buttons */
     cursor: pointer; /* Mouse pointer on hover */
@@ -31,12 +29,9 @@
     text-align: center; /* Center button text */
     padding: 20px 0px; /* Adjust padding to ensure text is vertically centered */
   }
-  
-  
   .logo-container {
     margin-bottom: 20px; /* Adjust the space as needed */
   }
-  
   .logo {
     width: 100px; /* Adjust the size as needed */
     height: auto;
