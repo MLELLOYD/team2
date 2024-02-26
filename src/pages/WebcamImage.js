@@ -1,41 +1,53 @@
-
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react'; // make sure to import useRef here
 import Webcam from 'react-webcam';
-import logo from './logo.png'; // Make sure the path matches the location of your logo file
-import {useNavigate } from 'react-router-dom'; 
+import logo from './logo.png';
+import { useNavigate } from 'react-router-dom';
+import { storage } from '../firebaseConfig';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 function App() {
-  const webcamRef = React.useRef(null);
+  const webcamRef = useRef(null);
   const [capturedImage, setCapturedImage] = useState(null);
   const navigate = useNavigate();
+  const [imageCount, setImageCount] = useState(1); // Initialize a counter for image names
 
-  // Dummy functions for button clicks
-  const handleButtonClick2 = () => alert('Button 2 clicked');
-
-  // Function to capture image from webcam
   const captureImage = () => {
     const imageSrc = webcamRef.current.getScreenshot();
     setCapturedImage(imageSrc);
+    alert('Image successfully captured!'); // Alert user of successful capture
   };
 
-  // Styles for the webcam container
-  const webcamStyle = {
-    width: '100%',
-    height: 'auto',
-  };
-  const handleButtonClick3 = () => {
-    navigate('/about'); // Use navigate to change the route
+  const uploadImageToFirebase = async () => {
+    if (capturedImage) {
+      const response = await fetch(capturedImage);
+      const blob = await response.blob();
+  
+      // Use the imageCount state to create a dynamic file name
+      const imageName = `Patient${imageCount}.jpg`;
+      const storageRef = ref(storage, `patientImage/${imageName}`);
+  
+      // Upload the blob to Firebase Storage
+      uploadBytes(storageRef, blob).then((snapshot) => {
+        console.log(`Uploaded a blob or file named ${imageName}!`);
+        alert(`Image named ${imageName} successfully uploaded!`); // Alert user of successful upload
+        setImageCount((prevCount) => prevCount + 1); // Increment the counter after upload
+      }).catch((error) => {
+        console.error("Error uploading file", error);
+        alert('Failed to upload image.'); // Alert user of upload failure
+      });
+    } else {
+      alert('No image captured to upload.'); // Alert if no image to upload
+    }
   };
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <img src={logo} alt="Clinic Logo" style={{ maxWidth: '100px', height: '100px' }} />
+      <img src={logo} alt="Clinic Logo" style={{ maxWidth: '100px', height: 'auto' }} />
       <div style={{ maxWidth: '100vw', overflow: 'hidden' }}>
         <Webcam
           audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          style={webcamStyle}
           videoConstraints={{
             width: 1280,
             height: 720,
@@ -44,19 +56,11 @@ function App() {
         />
       </div>
       <div>
-        <button onClick={handleButtonClick2}>Analyze</button>
-        <button onClick={handleButtonClick3}>Send Result</button>
-        <button onClick={captureImage}>Capture</button> {/* Add this button for capturing the image */}
+        <button onClick={uploadImageToFirebase}>Upload Image</button>
+        <button onClick={captureImage}>Capture</button>
       </div>
-      {capturedImage && (
-        <div>
-          <h2>Captured Image</h2>
-          <img src={capturedImage} alt="Captured" style={{ width: '100%', height: 'auto' }} />
-        </div>
-      )}
     </div>
   );
 }
 
 export default App;
-
