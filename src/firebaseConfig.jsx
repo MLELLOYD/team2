@@ -1,21 +1,22 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCvP0R4KagI5WdiIjWLnkj4JFQYrIi8le0",
-  authDomain: "thesisv3-75214.firebaseapp.com",
-  projectId: "thesisv3-75214",
-  storageBucket: "thesisv3-75214.appspot.com",
-  messagingSenderId: "448149860538",
-  appId: "1:448149860538:web:cc602648858eef33b9d283",
-  measurementId: "G-YBMW1X397R"
+  apiKey: "AIzaSyDzU9w_DLcAMeVcHfIBWQvNkzCCebyEdbo",
+  authDomain: "acnedetectionapp.firebaseapp.com",
+  projectId: "acnedetectionapp",
+  storageBucket: "acnedetectionapp.appspot.com",
+  messagingSenderId: "486659125490",
+  appId: "1:486659125490:web:9657cddd6fb82525aea06b"
 };
 
-// Initialize Firebase
+// Initialize Firebasefirebase.initializeApp(firebaseConfig);
+
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const storage = getStorage(app);
+
+export { storage };
