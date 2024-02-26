@@ -2,43 +2,56 @@
 .dropdown-container {
   position: relative;
   display: flex;
-  justify-content: center; /* Aligns the button horizontally */
-  align-items: center; /* Aligns the button vertically */
-  height: 100vh; /* Takes the full height of the viewport */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.button-wrapper {
+  width: 50%; /* Set the width to match the dropdown button */
 }
 
-.dropdown-button {
+
+.dropdown-button, .action-button {
   background-color: #f8f9fa;
   color: black;
-  padding: 16px 32px; /* Increased padding for a larger button */
-  font-size: 18px; /* Larger font size for the button text */
+  padding: 16px 32px;
+  font-size: 18px;
   border: 1px solid #ddd;
   cursor: pointer;
-  width: 50%;
-  border-radius: 5px; /* Optional: for rounded corners */
-  outline: none; /* Removes the outline to keep the design clean */
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow to the button */
+  width: 100%; /* Ensure both buttons fill the width of their container */
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 .dropdown-list {
   position: absolute;
   list-style: none;
   padding: 0;
-  margin-top: 5px; /* Adds a small space between the button and the dropdown */
+  margin-top: 5px;
   background-color: #ffffff;
   border: 1px solid #ddd;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  width: max-content; /* Ensures the width of dropdown is based on content */
+  width: max-content;
 }
 
 .dropdown-list-item {
-  padding: 15px 30px; /* Increased padding for a larger dropdown items */
+  padding: 15px 30px;
   cursor: pointer;
-  font-size: 16px; /* Larger font size for the dropdown items */
-  white-space: nowrap; /* Ensures the text doesn't wrap */
+  font-size: 16px;
+  white-space: nowrap;
 }
 
 .dropdown-list-item:hover {
   background-color: #f2f2f2;
+}
+.action-button {
+  margin-top: 10px; /* Adjusts spacing between the dropdown and action button */
+}
+.button-container {
+  width: 50%; /* Ensures both dropdown and action buttons match in width */
+  margin-bottom: 10px; /* Adds spacing between button groups */
 }
