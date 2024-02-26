@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'; // make sure to import useRef here
 import Webcam from 'react-webcam';
 import logo from './logo.png';
-import { useNavigate } from 'react-router-dom';
 import { storage } from '../firebaseConfig';
 import { ref, uploadBytes } from 'firebase/storage';
 
