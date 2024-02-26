@@ -3,12 +3,11 @@ import Webcam from 'react-webcam';
 import logo from './logo.png';
 import { useNavigate } from 'react-router-dom';
 import { storage } from '../firebaseConfig';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes } from 'firebase/storage';
 
 function App() {
   const webcamRef = useRef(null);
   const [capturedImage, setCapturedImage] = useState(null);
-  const navigate = useNavigate();
   const [imageCount, setImageCount] = useState(1); // Initialize a counter for image names
 
   const captureImage = () => {
